@@ -3,20 +3,16 @@ const app = express();
 const port = 5000;
 var cors = require("cors");
 const pool = require("./db");
-const path = require('path')
-
-
+const path = require("path");
 
 //Midlewares
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, '../build')));
+app.use(express.static(path.join(__dirname, "../build")));
 
-
-
-app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'build', '../build/index.html'));
+app.use("*", function (req, res) {
+  res.sendFile(path.join(__dirname, "../build/index.html"));
 });
 
 //Routes
